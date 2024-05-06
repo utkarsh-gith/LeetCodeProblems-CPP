@@ -1,4 +1,5 @@
 // Idea: Array is sorted, so use binary search. Also if the element is not present low will be the postion where the element has to be inserted.
+// Time Complexity: O(log n)
 
 class Solution {
 public:
