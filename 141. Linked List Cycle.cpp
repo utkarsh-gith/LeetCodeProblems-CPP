@@ -1,4 +1,4 @@
-// using slow and fast
+// Floyd Cycle Detection (using slow and fast)
 
 class Solution {
 public:
@@ -20,6 +20,32 @@ public:
             if(slow == fast){
                 return true;
             }
+        }
+
+        return false;
+    }
+};
+
+// OR
+
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        
+        map<ListNode* , bool> check;
+
+        if(head == NULL || head -> next == NULL){
+            return false;
+        }
+
+        while(head != NULL){
+
+            if(check[head]){
+                return true;
+            }
+            check[head] = true;
+            head = head -> next;
+
         }
 
         return false;
