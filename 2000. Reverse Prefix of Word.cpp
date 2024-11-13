@@ -29,3 +29,54 @@ public:
         return rev;
     }
 };
+
+// OR
+
+class Solution {
+public:
+    string reversePrefix(string word, char ch) {
+        
+        int n = word.length();
+        int i = 0;
+
+        while(i < n && word[i] != ch){
+            i++;
+        }
+
+        if(word[i] == ch){
+            int j = 0;
+            while(j < i){
+                swap(word[j++],word[i--]);
+            }
+        }
+
+        return word;
+    }
+};
+
+//OR Using Stack
+
+class Solution {
+public:
+    string reversePrefix(string word, char ch) {
+        
+        int n = word.length();
+        int i = 0;
+        stack<char> reverse;
+
+        while(i < n && word[i] != ch){
+            reverse.push(word[i++]);
+        }
+
+        if(word[i] == ch){
+            word[0] = ch;
+            i = 1;
+            while(!reverse.empty()){
+                word[i++] = reverse.top();
+                reverse.pop();
+            }
+        }
+
+        return word;
+    }
+};
