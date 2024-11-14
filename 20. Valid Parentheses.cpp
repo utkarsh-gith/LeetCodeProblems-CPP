@@ -3,23 +3,31 @@
 class Solution {
 public:
     bool isValid(string s) {
+
+        int n = s.size();
+
+        if(n % 2 != 0){
+            return false;
+        }
+
         stack<char> p;
-        int n = s.size(),i=0;
-        while(i<n)
+        int i = 0;
+
+        while(i < n)
         {
-            if(s[i]=='(' || s[i]=='[' || s[i]=='{')
+            if(s[i] == '(' || s[i] == '[' || s[i] == '{')
                 p.push(s[i]);
-            else if(s[i]==')' || s[i]==']' || s[i]=='}')
+            else if(s[i] == ')' || s[i] == ']' || s[i] == '}')
                 if(p.empty())
                     return 0;
             else{
-                char c=p.top();
+                char c = p.top();
                 p.pop();
-                if(s[i]==')' && c!='(')
+                if(s[i] == ')' && c != '(')
                     return 0;
-                if(s[i]==']' && c!='[')
+               if(s[i] == ']' && c != '[')
                     return 0;
-                if(s[i]=='}' && c!='{')
+                if(s[i] == '}' && c != '{')
                     return 0;
             }
             i++;
