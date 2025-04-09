@@ -25,7 +25,7 @@ public:
     }
 };
 
-// Recursion + Memorisation
+// Recursion + Memoisation
 
 class Solution
 {
@@ -109,6 +109,34 @@ public:
         for (int i = 2; i < n; i++)
         {
             int n3 = max(n1 + nums[i], n2);
+            n1 = n2;
+            n2 = n3;
+        }
+
+        return n2;
+    }
+};
+
+// OR
+
+class Solution
+{
+public:
+    int rob(vector<int> &nums)
+    {
+        int n = nums.size();
+
+        if (n == 1)
+        {
+            return nums[0];
+        }
+
+        int n1 = 0;
+        int n2 = nums[0];
+
+        for (int i = 1; i < nums.size(); i++)
+        {
+            int n3 = max(nums[i] + n1, n2);
             n1 = n2;
             n2 = n3;
         }
